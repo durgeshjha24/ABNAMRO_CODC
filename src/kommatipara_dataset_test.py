@@ -2,12 +2,16 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col,lower,trim
 from chispa.dataframe_comparer import *
+import logging
 from chispa.column_comparer import assert_column_equality
 from kommatipara_dataset import (
     read_dataset,
     parsing_arguments,
     process_files_data,
 
+)
+from config import(
+   log_file_path_name,
 )
 
 def test_schema_check_client_data(df_client, spark):
@@ -145,6 +149,7 @@ def main():
     6. Tests the data joining functionality to ensure correctness.
 
     """
+    
 
     args = parsing_arguments()
     list_of_countries=args.countries
@@ -155,13 +160,39 @@ def main():
 
     spark = SparkSession.builder.master("local[*]").appName("Read_data").getOrCreate()
 
+    # Set up logging
+    logging.basicConfig(level=logging.INFO, filename=log_file_path_name, filemode="w")
+    console = logging.StreamHandler()
+    console.setLevel(logging.INFO)
+    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    console.setFormatter(formatter)
+    logging.getLogger("").addHandler(console)
+
+    logging.info(f"Started schema validation for client dataset")
+
     test_schema_check_client_data(df_client, spark)
 
+    logging.info(f"Finished schema validation for client dataset")
+
+    logging.info(f"Started schema validation for finance dataset")
+   
     test_schema_check_finance_data(df_finance, spark)
+
+    logging.info(f"Finished schema validation for finance dataset")
+
+    logging.info(f"Started testing of data processing logic")
+
+    test_process_files_data_func(list_of_countries, spark)
+
+    logging.info(f"Finshied testing of data processing logic")
+
+    logging.info(f"Started schema validation for final outcome dataframe")
 
     test_schema_check_final_outcome(df_final_client_data, spark)
 
-    test_process_files_data_func(list_of_countries, spark)
+    logging.info(f"Started schema validation for final outcome dataframe")
+
+    logging.info(f"All unit tests results : Passed ")
 
 if __name__ == "__main__":
     main()
