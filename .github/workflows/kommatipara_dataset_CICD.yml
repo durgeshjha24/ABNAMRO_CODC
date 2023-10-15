@@ -38,6 +38,10 @@ jobs:
       run: |
         export PYTHONPATH=src
         python src/kommatipara_dataset_test.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
-        python src/kommatipara_dataset.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
+      - name: Deploy and execute data processing code
+        run: |
+          export PYTHONPATH=src
+          python src/kommatipara_dataset.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
+
 
         
