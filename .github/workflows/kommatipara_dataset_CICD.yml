@@ -27,7 +27,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install -r requirements.txt
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -36,6 +36,9 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pip install -r requirements.txt
-        python /src/kommatipara_dataset_test.py "../data/dataset_one.csv" "../data/dataset_two.csv" "Netherlands" "United kingdom"
-        python /src/kommatipara_dataset.py "../data/dataset_one.csv" "../data/dataset_two.csv" "Netherlands" "United kingdom"
+        pip install pytest
+        export PYTHONPATH=src
+        python kommatipara_dataset_test.py "../data/dataset_one.csv" "../data/dataset_two.csv" "Netherlands" "United kingdom"
+        python kommatipara_dataset.py "../data/dataset_one.csv" "../data/dataset_two.csv" "Netherlands" "United kingdom"
+
+        
