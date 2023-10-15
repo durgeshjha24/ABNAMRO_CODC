@@ -30,6 +30,12 @@ client_column_need_to_drop=['first_name','last_name']
 
 finance_column_need_to_drop=['cc_n']
 
-log_file_path_name="../logs/kommatipara_dataset.log"
+log_file_path_name="logs/kommatipara_dataset.log"
 
-target_file_path_name="../client_data/"
+target_file_path_name="client_data/"
+
+client_file="data/dataset_one.csv"
+
+finance_file="data/dataset_two.csv"
+
+countries='"Netherlands" "United kingdom"'
