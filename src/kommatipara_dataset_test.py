@@ -2,12 +2,12 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col,lower,trim
 from chispa.dataframe_comparer import *
-import logging
 from chispa.column_comparer import assert_column_equality
 from kommatipara_dataset import (
     read_dataset,
     parsing_arguments,
     process_files_data,
+    rotating_logger,
 
 )
 from config import(
@@ -94,7 +94,7 @@ def test_schema_check_final_outcome(df_final_client_data, spark):
     #apply chispa package to compare schema
     assert_schema_equality(schema_final_outcome_data_test,schema_final_outcome_data)
 
-def test_process_files_data_func(list_of_countries, spark):
+def test_process_files_data_func(list_of_countries, spark,logger):
     """
     Unit test for verifying the data joining functionality of the 'process_files_data' function.
 
@@ -126,7 +126,7 @@ def test_process_files_data_func(list_of_countries, spark):
     df_client= df_client.withColumn('country',lower(trim(df_client['country'])))
     
     #Invoke the process_files_data function for unit testing
-    df_final_client_data = process_files_data(df_client,df_finance,list_of_countries)
+    df_final_client_data = process_files_data(logger,df_client,df_finance,list_of_countries)
     
     #expected result
     expected_data = [("1", "feusden0@ameblo.jp", "netherlands", "1QKy8RoeW", "dinersclub")]
@@ -149,50 +149,51 @@ def main():
     6. Tests the data joining functionality to ensure correctness.
 
     """
-    # Set up logging
-    logging.basicConfig(level=logging.INFO, filename=log_file_path_name, filemode="a")
-    console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
-    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    console.setFormatter(formatter)
-    logging.getLogger("").addHandler(console)
+ 
+
+    logger=rotating_logger(log_file_path_name)
+
+    logger.info(f"===============================Unit test started=================================================")
 
     args = parsing_arguments()
     list_of_countries=args.countries
 
-    df_client,df_finance = read_dataset(args.client_file, args.financial_file)
+    df_client,df_finance = read_dataset(logger,args.client_file, args.financial_file)
     
-    df_final_client_data= process_files_data(df_client,df_finance,list_of_countries)
+    df_final_client_data= process_files_data(logger,df_client,df_finance,list_of_countries)
+
+    #create spark session
 
     spark = SparkSession.builder.master("local[*]").appName("Read_data").getOrCreate()
 
-    
-
-    logging.info(f"Started schema validation for client dataset")
+    logger.info(f"Started schema validation for client dataset")
 
     test_schema_check_client_data(df_client, spark)
 
-    logging.info(f"Finished schema validation for client dataset")
+    logger.info(f"Finished schema validation for client dataset")
 
-    logging.info(f"Started schema validation for finance dataset")
+    logger.info(f"Started schema validation for finance dataset")
    
     test_schema_check_finance_data(df_finance, spark)
 
-    logging.info(f"Finished schema validation for finance dataset")
+    logger.info(f"Finished schema validation for finance dataset")
 
-    logging.info(f"Started testing of data processing logic")
+    logger.info(f"Started testing of data processing logic")
 
-    test_process_files_data_func(list_of_countries, spark)
+    test_process_files_data_func(list_of_countries, spark,logger)
 
-    logging.info(f"Finshied testing of data processing logic")
+    logger.info(f"Finshied testing of data processing logic")
 
-    logging.info(f"Started schema validation for final outcome dataframe")
+    logger.info(f"Started schema validation for final outcome dataframe")
 
     test_schema_check_final_outcome(df_final_client_data, spark)
 
-    logging.info(f"Started schema validation for final outcome dataframe")
+    logger.info(f"Started schema validation for final outcome dataframe")
 
-    logging.info(f"All unit tests results : Passed ")
+    logger.info(f"All unit tests results : Passed ")
+
+    logger.info(f"===============================Unit test End=================================================")
+
 
 if __name__ == "__main__":
     main()
