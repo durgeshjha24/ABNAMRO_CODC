@@ -159,17 +159,19 @@ def main():
    logging.info(f"Parsing arguments completed")
    
    try:
-      # Process the data
+      #Reading client & finance data
       df_client,df_finance=read_dataset(args.client_file, args.financial_file)
+
+      #Performing data processing to create dataset
       df_final_client_data=process_files_data(df_client,df_finance, args.countries)
-      logging.info(f"Started wrting the final outcome of datasets")
+
+      logging.info(f"Started writing the final outcome of datasets")
       df_final_client_data.coalesce(1).write.csv(target_file_path_name, header=True, mode="overwrite")
       logging.info(f"Dataset is ready for end user")
+
    except Exception as e:
         logging.error(f"Error processing data: {str(e)}")
 
 if __name__ == "__main__":
     main()
 
-
-# python src/kommatipara_dataset.py "../data/dataset_one.csv" "../data/dataset_two.csv" "Netherlands" "United kingdom"
