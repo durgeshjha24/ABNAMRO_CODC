@@ -1,12 +1,9 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: CICD
+name: CI
 
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
-  
 
 permissions:
   contents: read
@@ -37,7 +34,3 @@ jobs:
       run: |
         export PYTHONPATH=src
         python src/kommatipara_dataset_test.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
-    - name: Deploy and execute data processing code
-      run: |
-        export PYTHONPATH=src
-        python src/kommatipara_dataset.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
