@@ -38,7 +38,7 @@ jobs:
       run: |
         pip install pytest
         export PYTHONPATH=src
-        # python kommatipara_dataset_test.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
+        python test/kommatipara_dataset_test.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
         python src/kommatipara_dataset.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
 
         
