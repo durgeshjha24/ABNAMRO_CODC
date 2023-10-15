@@ -41,3 +41,8 @@ jobs:
       run: |
         export PYTHONPATH=src
         python src/kommatipara_dataset.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
+    - name: create wheel package
+      run: |
+        export PYTHONPATH=src
+        python setup.py bdist_wheel
+
