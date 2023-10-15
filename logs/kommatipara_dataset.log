@@ -1,0 +1,94 @@
+INFO:root:Started parsing arguments
+INFO:root:Parsing arguments completed
+INFO:root:Spark session created successfully
+INFO:root:Started reading Client dataset
+INFO:root:Finished reading Client dataset including triming of country column
+INFO:root:Started reading Finance dataset
+INFO:root:Started reading Finance dataset
+INFO:root:Started filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name'] from the client dataset
+INFO:root:Finished filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name']  from the client dataset
+INFO:root:Started dropping ['cc_n'] columns from the financial dataset
+INFO:root:Finished dropping ['cc_n'] columns from the financial dataset
+INFO:root:Started renaming columns for better understanding
+INFO:root:Finished renaming columns
+INFO:root:Performing  join on client and finance dataset
+INFO:root:Finished join on client and finance dataset
+INFO:root:Started writing the final outcome of datasets
+INFO:root:Dataset is ready for end user
+INFO:root:Started parsing arguments
+INFO:root:Parsing arguments completed
+INFO:root:Spark session created successfully
+INFO:root:Started reading Client dataset
+INFO:root:Finished reading Client dataset including triming of country column
+INFO:root:Started reading Finance dataset
+INFO:root:Started reading Finance dataset
+INFO:root:Started filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name'] from the client dataset
+INFO:root:Finished filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name']  from the client dataset
+INFO:root:Started dropping ['cc_n'] columns from the financial dataset
+INFO:root:Finished dropping ['cc_n'] columns from the financial dataset
+INFO:root:Started renaming columns for better understanding
+INFO:root:Finished renaming columns
+INFO:root:Performing  join on client and finance dataset
+INFO:root:Finished join on client and finance dataset
+INFO:root:Started writing the final outcome of datasets
+INFO:root:Dataset is ready for end user
+INFO:root:Spark session created successfully
+INFO:root:Started reading Client dataset
+INFO:root:Finished reading Client dataset including triming of country column
+INFO:root:Started reading Finance dataset
+INFO:root:Started reading Finance dataset
+INFO:root:Started filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name'] from the client dataset
+INFO:root:Finished filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name']  from the client dataset
+INFO:root:Started dropping ['cc_n'] columns from the financial dataset
+INFO:root:Finished dropping ['cc_n'] columns from the financial dataset
+INFO:root:Started renaming columns for better understanding
+INFO:root:Finished renaming columns
+INFO:root:Performing  join on client and finance dataset
+INFO:root:Finished join on client and finance dataset
+INFO:root:Started schema validation for client dataset
+INFO:root:Finished schema validation for client dataset
+INFO:root:Started schema validation for finance dataset
+INFO:root:Finished schema validation for finance dataset
+INFO:root:Started testing of data processing logic
+INFO:root:Started filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name'] from the client dataset
+INFO:root:Finished filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name']  from the client dataset
+INFO:root:Started dropping ['cc_n'] columns from the financial dataset
+INFO:root:Finished dropping ['cc_n'] columns from the financial dataset
+INFO:root:Started renaming columns for better understanding
+INFO:root:Finished renaming columns
+INFO:root:Performing  join on client and finance dataset
+INFO:root:Finished join on client and finance dataset
+INFO:root:Finshied testing of data processing logic
+INFO:root:Started schema validation for final outcome dataframe
+INFO:root:Started schema validation for final outcome dataframe
+INFO:root:All unit tests results : Passed 
+INFO:root:Spark session created successfully
+INFO:root:Started reading Client dataset
+INFO:root:Finished reading Client dataset including triming of country column
+INFO:root:Started reading Finance dataset
+INFO:root:Started reading Finance dataset
+INFO:root:Started filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name'] from the client dataset
+INFO:root:Finished filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name']  from the client dataset
+INFO:root:Started dropping ['cc_n'] columns from the financial dataset
+INFO:root:Finished dropping ['cc_n'] columns from the financial dataset
+INFO:root:Started renaming columns for better understanding
+INFO:root:Finished renaming columns
+INFO:root:Performing  join on client and finance dataset
+INFO:root:Finished join on client and finance dataset
+INFO:root:Started schema validation for client dataset
+INFO:root:Finished schema validation for client dataset
+INFO:root:Started schema validation for finance dataset
+INFO:root:Finished schema validation for finance dataset
+INFO:root:Started testing of data processing logic
+INFO:root:Started filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name'] from the client dataset
+INFO:root:Finished filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name']  from the client dataset
+INFO:root:Started dropping ['cc_n'] columns from the financial dataset
+INFO:root:Finished dropping ['cc_n'] columns from the financial dataset
+INFO:root:Started renaming columns for better understanding
+INFO:root:Finished renaming columns
+INFO:root:Performing  join on client and finance dataset
+INFO:root:Finished join on client and finance dataset
+INFO:root:Finshied testing of data processing logic
+INFO:root:Started schema validation for final outcome dataframe
+INFO:root:Started schema validation for final outcome dataframe
+INFO:root:All unit tests results : Passed 

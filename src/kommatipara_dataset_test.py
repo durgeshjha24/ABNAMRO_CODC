@@ -149,7 +149,13 @@ def main():
     6. Tests the data joining functionality to ensure correctness.
 
     """
-    
+    # Set up logging
+    logging.basicConfig(level=logging.INFO, filename=log_file_path_name, filemode="a")
+    console = logging.StreamHandler()
+    console.setLevel(logging.INFO)
+    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    console.setFormatter(formatter)
+    logging.getLogger("").addHandler(console)
 
     args = parsing_arguments()
     list_of_countries=args.countries
@@ -160,13 +166,7 @@ def main():
 
     spark = SparkSession.builder.master("local[*]").appName("Read_data").getOrCreate()
 
-    # Set up logging
-    logging.basicConfig(level=logging.INFO, filename=log_file_path_name, filemode="w")
-    console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
-    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    console.setFormatter(formatter)
-    logging.getLogger("").addHandler(console)
+    
 
     logging.info(f"Started schema validation for client dataset")
 
