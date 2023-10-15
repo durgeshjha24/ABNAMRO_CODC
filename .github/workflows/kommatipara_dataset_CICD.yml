@@ -36,6 +36,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        export PYTHONPATH=src
+        pip install -r requirements.txt
         python /src/kommatipara_dataset_test.py "../data/dataset_one.csv" "../data/dataset_two.csv" "Netherlands" "United kingdom"
         python /src/kommatipara_dataset.py "../data/dataset_one.csv" "../data/dataset_two.csv" "Netherlands" "United kingdom"
