@@ -1,0 +1,6 @@
+README.md
+setup.py
+Process_Kommatipara_dataset.egg-info/PKG-INFO
+Process_Kommatipara_dataset.egg-info/SOURCES.txt
+Process_Kommatipara_dataset.egg-info/dependency_links.txt
+Process_Kommatipara_dataset.egg-info/top_level.txt
