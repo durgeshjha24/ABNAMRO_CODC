@@ -5,7 +5,7 @@ name: CICD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
   
 
 permissions: write-all
@@ -36,7 +36,7 @@ jobs:
       run: |
         export PYTHONPATH=src
         python src/kommatipara_dataset_test.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
-    - name: Deploy and execute data processing code
+    - name: execute data processing code
       run: |
         export PYTHONPATH=src
         python src/kommatipara_dataset.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
@@ -44,7 +44,14 @@ jobs:
       run: |
         export PYTHONPATH=src
         python setup.py bdist_wheel
-    - uses: stefanzweifel/git-auto-commit-action@v4
+    - name: Publish artifacts to dev
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-          commit_message: Changed files from latest run
+        commit_message: Changed files from latest run
+    - name: Merge artifact to main branch
+      uses: devmasx/merge-branch@master
+      with:
+        type: now
+        target_branch: main
+        message: Merged artifact  into main
 
