@@ -93,7 +93,7 @@ def test_schema_check_final_outcome(df_final_client_data, spark):
     #apply chispa package to compare schema
     assert_schema_equality(schema_final_outcome_data_test,schema_final_outcome_data)
 
-def test_process_files_data_func(list_of_countries, spark,logger):
+def test_process_files_data_func(spark,logger):
     """
     Unit test for verifying the data joining functionality of the 'process_files_data' function.
 
@@ -123,6 +123,7 @@ def test_process_files_data_func(list_of_countries, spark,logger):
     
     #Performing transformation on test client data
     df_client= df_client.withColumn('country',lower(trim(df_client['country'])))
+    list_of_countries=['Netherlands','United Kingdom']
     
     #Invoke the process_files_data function for unit testing
     df_final_client_data = process_files_data(logger,df_client,df_finance,list_of_countries)
@@ -154,7 +155,7 @@ def main():
 
     logger.info(f"===============================Unit test started=================================================")
 
-    args = parsing_arguments()
+    args = parsing_arguments(logger)
     list_of_countries=args.countries
 
     df_client,df_finance = read_dataset(logger,args.client_file, args.financial_file)
@@ -179,7 +180,7 @@ def main():
 
     logger.info(f"Started testing of data processing logic")
 
-    test_process_files_data_func(list_of_countries, spark,logger)
+    test_process_files_data_func(spark,logger)
 
     logger.info(f"Finshied testing of data processing logic")
 
