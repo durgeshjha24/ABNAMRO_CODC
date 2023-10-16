@@ -14,7 +14,7 @@ from config import(
    target_file_path_name,
 )
 
-def parsing_arguments():
+def parsing_arguments(logger):
     
     """
     Parse command-line arguments for the data processing.
@@ -22,7 +22,8 @@ def parsing_arguments():
     This function sets up an argument parser to capture the necessary input parameters for data processing. It expects the following arguments:
     - 'client_file': Path to the client dataset.
     - 'financial_file': Path to the financial dataset.
-    - 'countries': A list of countries used to filter the client data.
+    - 'countries': A list of countries used to filter the client data.Optional arguments and default value set to None if
+       no input received.
 
     Returns:
         argparse.Namespace: An object containing the parsed command-line arguments.
@@ -30,12 +31,16 @@ def parsing_arguments():
     """
 
     parser = argparse.ArgumentParser(description="Process client data")
-    parser.add_argument("client_file", help="Path to the client dataset")
-    parser.add_argument("financial_file", help="Path to the financial dataset")
-    parser.add_argument("countries", help="Countries to filter", nargs="+")
+    parser.add_argument("--client_file", required=True, help="Path to the client dataset")
+    parser.add_argument("--financial_file",required=True, help="Path to the financial dataset")
+    # Make the 'countries' argument optional with a default value of an empty list.
+    parser.add_argument("countries", help="Countries to filter", nargs="*",default=None)
+    
     args = parser.parse_args()
     
     return args
+    
+
 
 def read_dataset(logger,client_file_path, finance_file_path):
     
@@ -97,7 +102,11 @@ def process_files_data(logger,df_client,df_finance,list_of_countries):
    # Filter clients from specified countries and dropping personal identifiable information from the client dataset
    logger.info(f"Started filtering clients from specified countries and dropping personal identifiable information columns {client_column_need_to_drop} from the client dataset")
    list_of_countries= [element.lower() for element  in list_of_countries]
-   df_client = df_client.filter(col("country").isin(list_of_countries)).drop(*client_column_need_to_drop)
+   
+   if len(list_of_countries)>0:
+    df_client = df_client.filter(col("country").isin(list_of_countries)).drop(*client_column_need_to_drop)
+   else:
+    df_client = df_client.drop(*client_column_need_to_drop)
    logger.info(f"Finished filtering clients from specified countries and dropping personal identifiable information columns {client_column_need_to_drop}  from the client dataset")
    
    # Remove credit card numbers from the financial dataset
@@ -116,6 +125,7 @@ def process_files_data(logger,df_client,df_finance,list_of_countries):
    logger.info(f"Performing  join on client and finance dataset")
    df_final_client_data = df_client.join(df_finance, "client_identifier", "inner")
    logger.info(f"Finished join on client and finance dataset")
+   logger.info(f"No of records present in final dataset :{df_final_client_data.count()}")
    return df_final_client_data
 
 def rotating_logger(log_file_path_name):
@@ -153,11 +163,6 @@ def rotating_logger(log_file_path_name):
    logger.addHandler(file_handler)
    logger.addHandler(console_handler)
 
-   # Parse command-line arguments
-   logger.info(f"Started parsing arguments")
-   args = parsing_arguments()
-   logger.info(f"Parsing arguments completed")
-
    return logger
    
 
@@ -187,7 +192,7 @@ def main():
     Example:
     main()
    """
-   
+
    try:
       
       #Invoke logger function
@@ -196,7 +201,7 @@ def main():
 
       # Parse command-line arguments
       logger.info(f"Started parsing arguments")
-      args = parsing_arguments()
+      args = parsing_arguments(logger)
       logger.info(f"Parsing arguments completed")
       
       #Reading client & finance data
