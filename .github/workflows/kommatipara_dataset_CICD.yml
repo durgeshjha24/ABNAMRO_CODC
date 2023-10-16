@@ -48,11 +48,8 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Changed files from latest run
-    - name: Merge artifact to main branch
-      uses: devmasx/merge-branch@master
+    - name: Publish artifacts to Main branch
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        type: now
-        target_branch: main
-        message: Merged artifact  into main
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-
+        commit_message: Automated chages
+        branch: main
