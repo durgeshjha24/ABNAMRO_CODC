@@ -33,9 +33,11 @@
 > 
   7. The processed data will be saved in the client_data directory.
   8. Logs generated during data processing will be stored in the logs directory.A rotating logger has been put into operation, and a fresh file will be created when the current file reaches a size limit of 1MB
-  9. An automated build pipeline using GitHub Actions is in place. It will build the project and run tests whenever changes are pushed to the repository. The workflow configurations can be found in the .github/workflows directory.
+  9. An automated build pipeline using GitHub Actions is in place. It will build the project and run tests whenever changes are pushed to the dev branch using pull request. The workflow configurations can be found in the .github/workflows directory.
   10. The project can be packaged into a source distribution file. A Wheel package is also available in the dist directory. If you make changes to the code, you can create Wheel packages for your changes by running the command: 
-  (python setup.py bdist_wheel)
+    ```python
+    python setup.py bdist_wheel
+>
   
 
 
@@ -47,6 +49,6 @@
  2. Establish a new branch dedicated to your specific feature.
  3. Implement your modifications and enhancements.
  4. Record and upload your changes to the feature branch.
- 5. Initiate a pull request to integrate your alterations into the development branch.
- 6. Automatically, upon any push to the development branch, the kommatipara_dataset_CICD.yml will be triggered. It will facilitate continuous integration (CI) across multiple phases and subsequently deploy your adjustments to the main branch as part of continuous delivery (CD).
+ 5. Initiate a pull request to integrate your alterations into the dev branch.
+ 6. Automatically, upon any push to the dev branch, the kommatipara_dataset_CICD.yml will be triggered. It will facilitate continuous integration (CI) across multiple phases and subsequently deploy your adjustments to the main branch as part of continuous delivery (CD).
  7. For this particular task, the main branch serves as the ultimate result, and all the outcomes of your code will be accessible in their respective directories.
