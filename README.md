@@ -24,8 +24,9 @@
   7. The processed data will be saved in the client_data directory.
   8. Logs generated during data processing will be stored in the logs directory.A rotating logger has been put into operation, and a fresh file will be created when the current file reaches a size limit of 1MB
   9. An automated build pipeline using GitHub Actions is in place. It will build the project and run tests whenever changes are pushed to the repository. The workflow configurations can be found in the .github/workflows directory.
-  10. The project can be packaged into a source distribution file. A Wheel package is also available in the dist directory. If you make changes to the code, you can create Wheel packages for your changes by running the command: ```python
-  python setup.py bdist_wheel
+  10. The project can be packaged into a source distribution file. A Wheel package is also available in the dist directory. If you make changes to the code, you can create Wheel packages for your changes by running the command: 
+  (python setup.py bdist_wheel)
+  
 
 
 ## CI/CD Implementation using GIThub action
