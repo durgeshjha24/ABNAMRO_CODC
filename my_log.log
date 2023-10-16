@@ -8,3 +8,10 @@
 2023-10-16 01:13:28,278 - INFO - Started writing the final outcome of datasets
 2023-10-16 01:13:28,739 - INFO - Dataset is ready for end user
 2023-10-16 01:13:28,739 - INFO - ================================================================================
+    - name: Merge artifact to main branch
+      uses: devmasx/merge-branch@master
+      with:
+        type: now
+        target_branch: main
+        message: Merged artifact  into main
+        github_token: ${{ secrets.GITHUB_TOKEN }}
