@@ -1,8 +1,7 @@
 # Import necessary libraries
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col,lower,trim
+from pyspark.sql.functions import lower,trim
 from chispa.dataframe_comparer import *
-from chispa.column_comparer import assert_column_equality
 from kommatipara_dataset import (
     read_dataset,
     parsing_arguments,
