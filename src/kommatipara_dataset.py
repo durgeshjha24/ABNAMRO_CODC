@@ -120,6 +120,16 @@ def process_files_data(logger,df_client,df_finance,list_of_countries):
 
 def rotating_logger(log_file_path_name):
    
+   """
+    Set up a rotating logger that logs messages to a file and displays them on the console.
+
+    Args:
+        log_file_path_name (str): The path to the log file.
+
+    Returns:
+        logging.Logger: A logger instance configured with both file and console handlers.
+   """
+   
    # Set up logging
    logger = logging.getLogger("my_logger")
    logger.setLevel(logging.INFO)
@@ -177,13 +187,6 @@ def main():
     Example:
     main()
    """
-
-#    logger=rotating_logger(log_file_path_name)
-
-#    # Parse command-line arguments
-#    logger.info(f"Started parsing arguments")
-#    args = parsing_arguments()
-#    logger.info(f"Parsing arguments completed")
    
    try:
       
