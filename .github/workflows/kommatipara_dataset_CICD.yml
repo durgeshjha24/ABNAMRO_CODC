@@ -57,14 +57,3 @@ jobs:
         from_branch: dev
         target_branch: main
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    - name: checkout main branch
-      uses: actions/checkout@v2
-      with:
-      ref: compiled-master
-    - run: |
-        yarn install
-        yarn build
-  - uses: stefanzweifel/git-auto-commit-action@v4
-    with:
-      commit_message: Add new build
-      branch: main
