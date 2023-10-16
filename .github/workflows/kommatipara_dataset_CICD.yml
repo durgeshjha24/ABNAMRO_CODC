@@ -48,8 +48,23 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Changed files from latest run
-    - name: Publish artifacts to Main branch
-      uses: stefanzweifel/git-auto-commit-action@v4
+    - name: checkout main branch
+      uses: actions/checkout@master
+    - name: Merge dev -> main
+      uses: devmasx/merge-branch@v1.3.1
       with:
-        commit_message: Automated chages
-        branch: main
+        type: now
+        from_branch: dev
+        target_branch: main
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: checkout main branch
+      uses: actions/checkout@v2
+      with:
+      ref: compiled-master
+    - run: |
+        yarn install
+        yarn build
+  - uses: stefanzweifel/git-auto-commit-action@v4
+    with:
+      commit_message: Add new build
+      branch: main
