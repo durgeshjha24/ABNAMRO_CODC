@@ -715,3 +715,57 @@ INFO:root:Dataset is ready for end user
 2023-10-16 17:27:40,138 - INFO - Started writing the final outcome of datasets
 2023-10-16 17:27:41,100 - INFO - Dataset is ready for end user
 2023-10-16 17:27:41,100 - INFO - ===============================End=================================================
+2023-10-16 17:46:55,393 - INFO - Started parsing arguments
+2023-10-16 17:46:55,394 - INFO - Parsing arguments completed
+2023-10-16 17:46:55,395 - INFO - ===============================Unit test started=================================================
+2023-10-16 17:47:01,232 - INFO - Spark session created successfully
+2023-10-16 17:47:01,232 - INFO - Started reading Client dataset
+2023-10-16 17:47:06,495 - INFO - Finished reading Client dataset including triming of country column
+2023-10-16 17:47:06,496 - INFO - Started reading Finance dataset
+2023-10-16 17:47:06,813 - INFO - Started reading Finance dataset
+2023-10-16 17:47:06,813 - INFO - Started filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name'] from the client dataset
+2023-10-16 17:47:06,846 - INFO - Finished filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name']  from the client dataset
+2023-10-16 17:47:06,846 - INFO - Started dropping ['cc_n'] columns from the financial dataset
+2023-10-16 17:47:06,851 - INFO - Finished dropping ['cc_n'] columns from the financial dataset
+2023-10-16 17:47:06,851 - INFO - Started renaming columns for better understanding
+2023-10-16 17:47:06,880 - INFO - Finished renaming columns
+2023-10-16 17:47:06,880 - INFO - Performing  join on client and finance dataset
+2023-10-16 17:47:06,918 - INFO - Finished join on client and finance dataset
+2023-10-16 17:47:06,921 - INFO - Started schema validation for client dataset
+2023-10-16 17:47:07,010 - INFO - Finished schema validation for client dataset
+2023-10-16 17:47:07,010 - INFO - Started schema validation for finance dataset
+2023-10-16 17:47:07,034 - INFO - Finished schema validation for finance dataset
+2023-10-16 17:47:07,034 - INFO - Started testing of data processing logic
+2023-10-16 17:47:07,094 - INFO - Started filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name'] from the client dataset
+2023-10-16 17:47:07,120 - INFO - Finished filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name']  from the client dataset
+2023-10-16 17:47:07,121 - INFO - Started dropping ['cc_n'] columns from the financial dataset
+2023-10-16 17:47:07,125 - INFO - Finished dropping ['cc_n'] columns from the financial dataset
+2023-10-16 17:47:07,130 - INFO - Started renaming columns for better understanding
+2023-10-16 17:47:07,159 - INFO - Finished renaming columns
+2023-10-16 17:47:07,159 - INFO - Performing  join on client and finance dataset
+2023-10-16 17:47:07,175 - INFO - Finished join on client and finance dataset
+2023-10-16 17:47:10,341 - INFO - Finshied testing of data processing logic
+2023-10-16 17:47:10,342 - INFO - Started schema validation for final outcome dataframe
+2023-10-16 17:47:10,428 - INFO - Started schema validation for final outcome dataframe
+2023-10-16 17:47:10,429 - INFO - All unit tests results : Passed 
+2023-10-16 17:47:10,429 - INFO - ===============================Unit test End=================================================
+2023-10-16 17:47:11,145 - INFO - Started parsing arguments
+2023-10-16 17:47:11,146 - INFO - Parsing arguments completed
+2023-10-16 17:47:11,146 - INFO - Started parsing arguments
+2023-10-16 17:47:11,147 - INFO - Parsing arguments completed
+2023-10-16 17:47:16,669 - INFO - Spark session created successfully
+2023-10-16 17:47:16,670 - INFO - Started reading Client dataset
+2023-10-16 17:47:21,730 - INFO - Finished reading Client dataset including triming of country column
+2023-10-16 17:47:21,731 - INFO - Started reading Finance dataset
+2023-10-16 17:47:22,097 - INFO - Started reading Finance dataset
+2023-10-16 17:47:22,097 - INFO - Started filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name'] from the client dataset
+2023-10-16 17:47:22,161 - INFO - Finished filtering clients from specified countries and dropping personal identifiable information columns ['first_name', 'last_name']  from the client dataset
+2023-10-16 17:47:22,161 - INFO - Started dropping ['cc_n'] columns from the financial dataset
+2023-10-16 17:47:22,177 - INFO - Finished dropping ['cc_n'] columns from the financial dataset
+2023-10-16 17:47:22,178 - INFO - Started renaming columns for better understanding
+2023-10-16 17:47:22,229 - INFO - Finished renaming columns
+2023-10-16 17:47:22,229 - INFO - Performing  join on client and finance dataset
+2023-10-16 17:47:22,282 - INFO - Finished join on client and finance dataset
+2023-10-16 17:47:22,282 - INFO - Started writing the final outcome of datasets
+2023-10-16 17:47:23,631 - INFO - Dataset is ready for end user
+2023-10-16 17:47:23,632 - INFO - ===============================End=================================================
