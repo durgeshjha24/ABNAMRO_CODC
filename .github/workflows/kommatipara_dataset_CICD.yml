@@ -35,11 +35,11 @@ jobs:
     - name: Test with chipsa
       run: |
         export PYTHONPATH=src
-        python src/kommatipara_dataset_test.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
+        python src/kommatipara_dataset_test.py --client_file "data/dataset_one.csv" --financial_file "data/dataset_two.csv" "Netherland" "United kingdom"
     - name: execute data processing code
       run: |
         export PYTHONPATH=src
-        python src/kommatipara_dataset.py "data/dataset_one.csv" "data/dataset_two.csv" "Netherlands" "United kingdom"
+        python src/kommatipara_dataset.py --client_file "data/dataset_one.csv" --financial_file "data/dataset_two.csv" "Netherland" "United kingdom"
     - name: create wheel package
       run: |
         export PYTHONPATH=src
