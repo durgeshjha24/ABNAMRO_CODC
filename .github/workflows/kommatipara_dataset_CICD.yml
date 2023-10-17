@@ -1,5 +1,11 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# This workflow is activated upon any push event occurring in the 'dev' branch
+# It configures and installs all the required Python dependencies
+# It conducts a thorough examination of Python code to identify syntax errors and undefined variables
+# Following that, it performs unit testing
+# It then executes the code
+# The results are published as an artifact in the 'dev' branch, containing the newly generated code output
+# Eventually, the code is deployed to the 'main' branch
+
 
 name: CICD
 
@@ -50,7 +56,7 @@ jobs:
         commit_message: Changed files from latest run
     - name: checkout main branch
       uses: actions/checkout@master
-    - name: Merge dev -> main
+    - name: Deploy to main branch
       uses: devmasx/merge-branch@v1.3.1
       with:
         type: now
