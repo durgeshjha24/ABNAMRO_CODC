@@ -55,3 +55,14 @@
  5. Initiate a pull request to integrate your alterations into the dev branch.
  6. Automatically, upon any push to the dev branch, the kommatipara_dataset_CICD.yml will be triggered. It will facilitate continuous integration (CI) across multiple phases and subsequently deploy your adjustments to the main branch as part of continuous delivery (CD).
  7. For this particular task, the main branch serves as the ultimate result, and all the outcomes of your code will be accessible in their respective directories.
+
+## Description of CICD Implementation(kommatipara_dataset_CICD.yml)
+>
+  1. This workflow is activated upon any push event occurring in the 'dev' branch
+  2. It configures and installs all the required Python dependencies
+  3. It conducts a thorough examination of Python code to identify syntax errors and undefined variables
+  4. Following that, it performs unit testing
+  5. It then executes the code
+  6. The results are published as an artifact in the 'dev' branch, containing the newly generated code output
+  7. Eventually, the code is deployed to the 'main' branch
+
