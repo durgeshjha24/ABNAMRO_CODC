@@ -36,7 +36,7 @@
      reaches a size limit of 1MB
   9. An automated build pipeline using GitHub Actions is in place. It will build the project and run tests whenever changes are pushed to the dev branch using pull request. The 
      workflow configurations can be found in the .github/workflows directory.
-  10.The project can be packaged into a source distribution file. A Wheel package is also available in the dist directory. If you make changes to the code, you can create Wheel 
+  10. The project can be packaged into a source distribution file. A Wheel package is also available in the dist directory. If you make changes to the code, you can create Wheel 
      packages for your changes by running the command: 
      ```python
      python setup.py bdist_wheel
