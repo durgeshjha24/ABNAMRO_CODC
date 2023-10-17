@@ -172,22 +172,17 @@ def main():
 
     This function serves as the entry point for the data processing and logging workflow. It performs the following tasks:
     1. Sets up logging to capture informative messages and potential errors, both to a log file and console.
-    2. Parses command-line arguments to obtain necessary input parameters.
+    2. Invoke parsing_arguments function to handle arguments
     3. Reads client and finance datasets using the provided file paths.
     4. Processes the datasets to generate the final client data.
     5. Writes the final dataset to the target directory.
     
-    Logging:
-    - A log file is created to record detailed information about the data processing.
-    - Console output is configured to display real-time progress.
-
-    Command-Line Arguments:
-    - Parses command-line arguments to provide input parameters to the data processing function.
-    - Arguments include the paths to client and financial datasets and the countries to filter.
-
     Data Processing:
     - Invokes the 'read_dataset' and 'process_files_data' functions for data processing.
     - Captures successful data processing and logs any exceptions encountered during the process.
+
+    Raises:
+    Exception: If any error occurs during data processing, it is logged with details.
 
     Example:
     main()

@@ -23,6 +23,7 @@ def test_schema_check_client_data(df_client, spark):
     
     Args:
         df_client (DataFrame): The DataFrame to be tested.
+        spark (SparkSession): The SparkSession used for creating DataFrames.
 
     Raises:
         AssertionError: If the schema of 'df_client' does not match the expected schema, an assertion error is raised.
@@ -49,6 +50,7 @@ def test_schema_check_finance_data(df_finance, spark):
     
     Args:
         df_finance (DataFrame): The DataFrame to be tested.
+        spark (SparkSession): The SparkSession used for creating DataFrames.
 
     Raises:
         AssertionError: If the schema of 'df_finance' does not match the expected schema, an assertion error is raised.
@@ -77,6 +79,7 @@ def test_schema_check_final_outcome(df_final_client_data, spark):
     
     Args:
         df_final_client_data (DataFrame): The DataFrame to be tested.
+        spark (SparkSession): The SparkSession used for creating DataFrames.
 
     Raises:
         AssertionError: If the schema of 'df_final_client_data' does not match the expected schema, an assertion error is raised.
@@ -94,18 +97,34 @@ def test_schema_check_final_outcome(df_final_client_data, spark):
     assert_schema_equality(schema_final_outcome_data_test,schema_final_outcome_data)
 
 def test_process_files_data_func(spark,logger):
+    
     """
     Unit test for verifying the data joining functionality of the 'process_files_data' function.
 
     This test function checks if the 'process_files_data' function correctly joins client and finance datasets based on the provided test data and list of countries.
 
     Args:
-        list_of_countries (list): List of countries to filter client data during the join.
+        spark (SparkSession): The SparkSession used for creating DataFrames.
+        logger: The logger for capturing test information and potential errors.
 
     Raises:
         AssertionError: If the joined DataFrame does not match the expected result, an assertion error is raised.
-    
+
+    Test Data:
+    - Sample test data is provided for client and finance datasets.
+    - Test schemas are defined for these dataframes.
+
+    Test Steps:
+    - Create test DataFrames.
+    - Perform transformations on the test client data.
+    - Invoke the 'process_files_data' function for unit testing.
+    - Define the expected result.
+    - Use the Chispa package to compare the output with the test data.
+
+    Example:
+    test_process_files_data_func(spark, logger)
     """
+
     # Sample test data
     data_client = [("1","Feliza","Eusden","feusden0@ameblo.jp","Netherlands"), 
                    ("3","Deliza","rusden","reusden0@ameblo.jp","United Kingdom")]
@@ -140,13 +159,15 @@ def main():
     """
     Main function for executing the data processing and testing workflow.
 
-    This function serves as the entry point for the data processing and testing workflow. It performs the following tasks:
-    1. Parses command-line arguments to obtain necessary input parameters.
-    2. Reads client and finance datasets using the provided file paths.
-    3. Processes the datasets to generate the final client data.
-    4. Executes schema checks for the client and finance datasets.
-    5. Tests the schema of the final outcome after data processing.
-    6. Tests the data joining functionality to ensure correctness.
+    This function serves as the entry point for testing workflow. It performs the following tasks:
+    
+    1. Sets up logging to capture informative messages and potential errors, both to a log file and console.
+    2. Parses command-line arguments to obtain necessary input parameters.
+    3. Reads client and finance datasets using the provided file paths.
+    4. Processes the datasets to generate the final client data.
+    5. Executes schema checks for the client and finance datasets.
+    6. Tests the schema of the final outcome after data processing.
+    7. Tests the data joining functionality to ensure correctness.
 
     """
  
