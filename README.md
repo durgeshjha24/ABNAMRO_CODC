@@ -44,7 +44,7 @@
   
 
 
-## CI/CD Implementation using GIThub action
+## How to do CI/CD using GIThub action
    
 > steps
  
