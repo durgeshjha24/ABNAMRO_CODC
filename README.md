@@ -7,7 +7,7 @@
   2. Generic solution to removing credit card numbers from the financial dataset.
   3. Generic solution to Renaming columns in both datasets as per the assignment instructions.
   4. Joining the two datasets on id to generate the final client data.
-  5. Unit testing using chipsa packages
+  5. Unit testing using chispa packages
   6. Logging with rotating logger
   7. Basic CI/CD implementation using GITHUB Action
 
