@@ -12,7 +12,7 @@
   7. Basic CI/CD implementation using GITHUB Action
 
 
-## Follow the below mentioned instruction to understan/run this code in local environment
+## Follow the below mentioned instruction to understand/run this code in local environment
 
 > Steps
   
